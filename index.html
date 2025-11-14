@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vozes Negras do CERB</title>
+<link rel="icon" type="image/png" href="Imagens/Modelo de logotipo de pantera esport _ Vetor Premium.jpg">
+<style>
+/* ===== ESTILO GERAL ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Poppins', sans-serif; background: radial-gradient(circle at top, #1a001f, #050006); color: #fff; overflow-x: hidden; position: relative; }
+
+/* ===== FUNDO COM PANTERA ===== */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url('Imagens/pantera-afrofuturista.png') no-repeat center center/contain;
+  opacity: 1.0;
+  z-index: -1;
+  filter: drop-shadow(0 0 40px #a020f0) blur(1px);
+  animation: pantherGlow 6s ease-in-out infinite alternate;
+}
+
+/* Animação suave de brilho na pantera */
+@keyframes pantherGlow {
+  from { opacity: 1.0; filter: drop-shadow(0 0 20px #6a0dad); }
+  to { opacity: 1.0; filter: drop-shadow(0 0 45px #b060ff); }
+}
+
+header {
+  background: linear-gradient(90deg, #1a001f, #2d004d);
+  text-align: center;
+  padding: 60px 20px;
+  border-bottom: 3px solid #a020f0;
+  animation: fadeIn 1.5s ease;
+  box-shadow: 0 0 20px rgba(160, 32, 240, 0.4);
+}
+
+header h1 {
+  font-size: 3em;
+  color: #b060ff;
+  text-shadow: 0 0 20px #a020f0, 0 0 40px #6a0dad;
+}
+
+header p {
+  font-size: 1.2em;
+  margin-top: 10px;
+  color: #d9b3ff;
+}
+
+section {
+  padding: 60px 20px;
+  max-width: 1100px;
+  margin: auto;
+  animation: fadeInUp 1.5s ease;
+}
+
+h2 {
+  color: #b060ff;
+  margin-bottom: 15px;
+  border-left: 5px solid #a020f0;
+  padding-left: 10px;
+  text-transform: uppercase;
+}
+
+p {
+  line-height: 1.8;
+  color: #e6d6ff;
+  font-size: 1.1em;
+  margin-bottom: 25px;
+}
+
+/* ===== GALERIA ===== */
+.media-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.media-item {
+  flex: 1 1 300px;
+  max-width: 320px;
+  aspect-ratio: 3/4;
+  border: 3px solid #a020f0;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(160, 32, 240, 0.5);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.media-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 35px rgba(180, 80, 255, 0.8);
+}
+
+.media-item img, .media-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  cursor: pointer;
+  border-radius: 15px;
+}
+
+/* ===== POP-UP ===== */
+.popup {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(10, 0, 20, 0.95);
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.popup-content {
+  max-width: 60%;
+  max-height: 70%;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 0 30px rgba(180, 80, 255, 0.7);
+  background-color: #0a0010;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content img {
+  max-width: 90%;
+  max-height: 90vh;
+  object-fit: contain; /* MOSTRA A IMAGEM INTEIRA */
+  border-radius: 12px;
+}
+.close, .close-btn {
+  position: absolute;
+  top: 25px;
+  right: 35px;
+  font-size: 2em;
+  color: #fff;
+  cursor: pointer;
+  text-shadow: 0 0 10px #b060ff;
+  transition: 0.3s;
+}
+
+.close:hover, .close-btn:hover {
+  color: #b060ff;
+  transform: scale(1.1);
+}
+
+/* ===== BOTÃO ===== */
+.btn {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 12px 30px;
+  background: linear-gradient(90deg, #6a0dad, #b060ff);
+  color: #fff;
+  font-weight: bold;
+  border-radius: 10px;
+  text-decoration: none;
+  transition: 0.3s;
+  box-shadow: 0 0 15px rgba(176, 96, 255, 0.7);
+}
+
+.btn:hover {
+  background: linear-gradient(90deg, #b060ff, #6a0dad);
+  box-shadow: 0 0 30px rgba(176, 96, 255, 1);
+  transform: translateY(-2px);
+}
+
+/* ===== RODAPÉ ===== */
+footer {
+  text-align: center;
+  padding: 30px;
+  background: #12001a;
+  border-top: 2px solid #a020f0;
+  color: #bfa4e6;
+  font-size: 0.9em;
+  box-shadow: 0 -5px 15px rgba(160, 32, 240, 0.3);
+  animation: fadeIn 1.5s ease;
+}
+
+footer a { color: #b060ff; text-decoration: none; }
+footer a:hover { text-decoration: underline; }
+
+/* ===== ANIMAÇÕES ===== */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+/* ===== BLOCO ROXO DE FUNDO ===== */
+.bloco-roxo {
+  background: rgba(60, 0, 90, 0.6);
+  border: 2px solid #b060ff;
+  border-radius: 20px;
+  box-shadow: 0 0 25px rgba(176, 96, 255, 0.6);
+  padding: 30px;
+  margin: 40px auto;
+  max-width: 1100px;
+  text-align: center;
+  color: #fff;
+}
+
+.bloco-roxo h2 {
+  font-size: 1.6em;
+  color: #e5c6ff;
+  text-shadow: 0 0 10px #b060ff;
+  margin-bottom: 10px;
+}
+
+.intro-galeria {
+  color: #d9c0ff;
+  font-style: italic;
+  margin-bottom: 25px;
+}
+
+.galeria-edicao {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 25px;
+  justify-items: center;
+}
+
+.galeria-item {
+  text-align: center;
+  background: rgba(30, 0, 45, 0.6);
+  border-radius: 15px;
+  padding: 12px;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 0 15px rgba(176, 96, 255, 0.3);
+  transition: 0.3s;
+}
+
+.galeria-item:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px rgba(176, 96, 255, 0.7);
+}
+
+.galeria-item img {
+  width: 100%;
+  height: 200px; /* você pode ajustar esse valor */
+  object-fit: contain; /* NÃO CORTA A IMAGEM */
+  border-radius: 12px;
+  border: 2px solid #a020f0;
+  background-color: #0a0010; /* adiciona fundo pra não ficar transparente */
+  cursor: pointer;
+}
+
+.galeria-item p {
+  margin-top: 10px;
+  font-size: 0.95em;
+  color: #e6d6ff;
+  font-style: italic;
+}
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) { .galeria-edicao { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .galeria-edicao { grid-template-columns: 1fr; } }
+
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Vozes Negras do CERB</h1>
+  <p>Celebrando raízes que atravessam o tempo e inspiram caminhos, com conhecimento que liberta e transforma histórias.</p>
+</header>
+
+<section>
+  <h2>O que é Afrofuturismo?</h2>
+  <p>O Afrofuturismo é um movimento que une cultura afro, tecnologia e imaginação. Ele projeta futuros em que pessoas negras são protagonistas da inovação, da arte e da ciência, mesclando o passado ancestral com visões de um futuro livre e empoderado.</p>
+</section>
+
+<section>
+<h2>Origens e pioneiros do Afrofuturismo</h2>
+<p>O Afrofuturismo começou a se desenvolver entre os anos 1950 e 1970, com artistas que misturavam música, literatura e ficção científica. Um dos pioneiros foi o músico Sun Ra, que usava sons espaciais e ideias filosóficas sobre a libertação negra. A escritora Octavia Butler também foi essencial, criando histórias em que pessoas negras ocupavam papéis de destaque em mundos futuristas. Esses artistas abriram caminho para muitos outros, mostrando que a arte negra podia imaginar futuros alternativos e mais justos.</p>
+</section>
+
+<section>
+  <h2>Afrofuturismo no Brasil</h2>
+  <p>No Brasil, o Afrofuturismo vem crescendo cada vez mais, com artistas que usam a arte para valorizar a cultura afro-brasileira e imaginar novos futuros. Músicos como Rincon Sapiência, Karol Conká e Luedji Luna misturam ritmos modernos com referências africanas. No cinema e nas artes visuais, nomes como Jonathan Ferr e Moju Freitas exploram temas como identidade, ancestralidade e tecnologia. O Afrofuturismo brasileiro mostra que é possível falar de futuro sem esquecer as raízes e a história do povo negro.</p>
+</section>
+
+<section>
+<h2>Características e influências</h2>
+<p>O Afrofuturismo é marcado pela mistura entre o antigo e o moderno. Ele usa elementos da mitologia africana, da ciência, da espiritualidade e da tecnologia para criar novas formas de contar histórias. As cores vibrantes, os símbolos culturais e as roupas inspiradas em tradições africanas também são características visuais fortes. Além disso, o movimento é influenciado por lutas sociais, buscando combater o racismo e promover o orgulho da identidade negra.</p>
+</section>
+<section>
+  <h2>Importância cultural e social</h2>
+  <p>O Afrofuturismo é importante porque fortalece a representatividade negra e ajuda a reconstruir narrativas que foram apagadas ao longo da história. Ele mostra que pessoas negras sempre fizeram parte da construção do mundo — e continuarão moldando o futuro. Por meio da arte, da música, do cinema e da literatura, o Afrofuturismo inspira jovens a sonhar, criar e ocupar espaços que antes pareciam inalcançáveis. É um movimento de esperança, resistência e imaginação.</p>
+</section>
+<section id="importancia">
+  <h2>Novembro Negro e o Afrofuturismo</h2>
+  <p>O Novembro Negro é um mês dedicado à valorização da cultura afro-brasileira e à luta contra o racismo, com destaque para o Dia da Consciência Negra, em 20 de novembro. Essa data homenageia Zumbi dos Palmares, símbolo da resistência e da liberdade do povo negro.
+O Afrofuturismo se conecta fortemente com o Novembro Negro porque ambos compartilham o mesmo propósito: celebrar a identidade negra, lembrar as lutas do passado e imaginar um futuro de igualdade e respeito. Enquanto o Novembro Negro valoriza a memória e a história, o Afrofuturismo amplia essa reflexão ao imaginar novos caminhos para a população negra, cheios de tecnologia, arte e protagonismo. Juntos, eles mostram que a resistência e a criatividade são forças poderosas para transformar o presente e construir um futuro melhor.</p>
+</section>
+
+<section id="edicoes">
+  <h2>Edições Anteriores</h2>
+
+  <!-- Edição 2024 -->
+  <div style="background: rgba(40, 0, 70, 0.85); border: 2px solid #a020f0; border-radius: 15px; padding: 30px; box-shadow: 0 0 25px rgba(176, 96, 255, 0.4);">
+    <h3 style="color: #d9b3ff; margin-bottom: 15px;">Edição 2024 - “(RE)Existências Quilombola no Século XXI”</h3>
+    <p style="color: #e6d6ff; line-height: 1.7; margin-bottom: 25px;">Em <strong>2024</strong>, vivenciamos momentos de grande emoção e aprendizado com o início da culminância do projeto <strong>“(RE)Existências Quilombolas no Século XXI”</strong>...</p>
+    <div class="media-container">
+      <div class="media-item">
+        <img src="Imagens/Edição 2024 Matutino.jpg" alt="Edição 2024 Quilombola" onclick="openPopup(this.src, 'img')">
+      </div>
+      <div class="media-item">
+        <img src="Imagens/Edição 2024 Tarde.jpg" alt="Edição 2024 Quilombola" onclick="openPopup(this.src, 'img')">
+      </div>
+      <div class="media-item">
+        <video controls onclick="openPopup(this.querySelector('source').src, 'video')">
+          <source src="Videos/Edição 2024.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+
+  <!-- Edição 2023 -->
+  <div style="background: rgba(40, 0, 70, 0.85); border: 2px solid #a020f0; border-radius: 15px; padding: 30px; box-shadow: 0 0 25px rgba(176, 96, 255, 0.4); margin-top: 40px;">
+    <h3 style="color: #d9b3ff; margin-bottom: 15px;">Edição 2023 - “As Áfricas que a Bahia Abraça”</h3>
+    <p style="color: #e6d6ff; line-height: 1.7; margin-bottom: 25px;">Em <strong>2023</strong>, durante a manhã da Mostra de Conhecimentos do projeto Novembro Negro...</p>
+    <div class="media-container">
+      <div class="media-item">
+        <img src="Imagens/Desfile 2023 matutino.jpg" alt="Edição 2023" onclick="openPopup(this.src, 'img')">
+      </div>
+      <div class="media-item">
+        <img src="Imagens/Edição 2023 Tarde.jpg" alt="Edição 2023" onclick="openPopup(this.src, 'img')">
+      </div>
+      <div class="media-item">
+        <video controls onclick="openPopup(this.querySelector('source').src, 'video')">
+          <source src="Videos/Edição 2023.mp4" type="video/mp4">
+        </video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Galeria bloco roxo -->
+<section class="bloco-roxo">
+  <h2>Edição 2024 – Galeria “As Áfricas que a Bahia Abraça”</h2>
+  <p class="intro-galeria">Confira alguns momentos marcantes do projeto Novembro Negro no Colégio Renan Baleeiro...</p>
+  <div class="galeria-edicao">
+    <div class="galeria-item"><img src="Imagens/1 lugar 2024.jpg" alt="Apresentação de dança afro" onclick="openPopup(this.src, 'img')"><p>1º lugar no desfile de 2024: As alunas Cassiane, Emily e Luara conquistaram o primeiro lugar. Mesmo após uma desavença na sala, elas se uniram e deram um verdadeiro show na passarela.</p></div>
+    <div class="galeria-item"><img src="Imagens/2 lugar 2024.jpg" alt="Exposição cultural" onclick="openPopup(this.src, 'img')"><p>2º lugar no desfile de 2024: Os alunos Adeildo e Anne Michele conquistaram o segundo lugar após muito trabalho duro e dedicação.</p></div>
+    <div class="galeria-item"><img src="Imagens/3 lugar 2024.jpg" alt="Artesanato afro-brasileiro" onclick="openPopup(this.src, 'img')"><p>3º lugar no desfile de 2024: Os alunos Kauan e Maria conquistaram o terceiro lugar, dando um verdadeiro espetáculo na passarela com uma atuação impressionante.</p></div>
+    <div class="galeria-item"><img src="Imagens/SaveClip.App_468566338_447555924770235_8110366620652507163_n.jpg" alt="Apresentação musical" onclick="openPopup(this.src, 'img')"></div>
+    <div class="galeria-item"><img src="Imagens/SaveClip.App_468601334_1476169819718845_8287795993540533142_n.jpg" alt="Pintura corporal" onclick="openPopup(this.src, 'img')"></div>
+    <div class="galeria-item"><img src="Imagens/SaveClip.App_468629933_592392206778371_1081681924777467941_n.jpg" alt="Desfile cultural" onclick="openPopup(this.src, 'img')"></div>
+  </div>
+</section>
+<section class="bloco-roxo">
+  <h2>Edição 2023 – Galeria “As Áfricas que a Bahia Abraça”</h2>
+  <p class="intro-galeria">Confira alguns momentos marcantes do projeto Novembro Negro no Colégio Renan Baleeiro...</p>
+  <div class="galeria-edicao">
+    <div class="galeria-item"><img src="Imagens/1º lugar 2023.jpg" alt="Apresentação de dança afro" onclick="openPopup(this.src, 'img')"><p>1º lugar no desfile em 2023: as alunas Anne Michele e Cassiane brilharam com seus vestidos diante do palco. Após muito trabalho duro e demonstrando empatia com suas colegas, mesmo com pouco tempo para se arrumar, elas deram tudo de si, garantindo a vitória mais que merecida para a turma do 1º D.</p></div>
+    <div class="galeria-item"><img src="Imagens/2º lugar 2023.jpg" alt="Exposição cultural" onclick="openPopup(this.src, 'img')"><p>2º lugar no desfile em 2023: os alunos Ivan e Micaely da turma do 3º ano B do Colégio Estadual Renan Baleeiro deram um show de confiança e estilo diante do palco. Após muito esforço e dedicação, mesmo com pouco tempo para se preparar, eles mostraram comprometimento com a celebração da diversidade, garantindo a vitória merecida para a turma do 3º ano B.</p></div>
+    <div class="galeria-item"><img src="Imagens/3º lugar 2023.jpg" alt="Artesanato afro-brasileiro" onclick="openPopup(this.src, 'img')"><p>3º lugar no desfile em 2023: as alunas Gabi e Emily das turmas do 1º ano A e 2º ano do Colégio Estadual Renan Baleeiro brilharam na passarela com criatividade e estilo. Após muito esforço e dedicação, eles mostraram elegância e compromisso com a celebração da diversidade, garantindo a vitória merecida para suas turmas.</p></div>
+    <div class="galeria-item"><img src="Imagens/a.jpg" alt="Apresentação musical" onclick="openPopup(this.src, 'img')"></div>
+    <div class="galeria-item"><img src="Imagens/d.jpg" alt="Pintura corporal" onclick="openPopup(this.src, 'img')"></div>
+    <div class="galeria-item"><img src="Imagens/s.jpg" alt="Desfile cultural" onclick="openPopup(this.src, 'img')"></div>
+  </div>
+</section>
+
+
+<!-- POP-UP -->
+<div id="popup" class="popup">
+  <span class="close" onclick="closePopup()">&times;</span>
+  <div class="popup-content" id="popupContent"></div>
+</div>
+
+<footer>
+  <p>© 2025 Projeto Novembro Negro | Desenvolvido por <a href="#">Adeildo Santos e Icaro Matheus</a></p>
+</footer>
+
+<script>
+function openPopup(src, type) {
+  const popup = document.getElementById('popup');
+  const content = document.getElementById('popupContent');
+  popup.style.display = 'flex';
+
+  if (type === 'img') {
+    content.innerHTML = `<img src="${src}" alt="Imagem ampliada">`;
+  } else if (type === 'video') {
+    content.innerHTML = `<video src="${src}" controls autoplay></video>`;
+  }
+}
+
+function closePopup() {
+  const popup = document.getElementById('popup');
+  popup.style.display = 'none';
+  document.getElementById('popupContent').innerHTML = '';
+}
+</script>
+
+</body>
+</html>
